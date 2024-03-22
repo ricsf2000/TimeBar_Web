@@ -1,0 +1,61 @@
+
+.spacing {
+    margin: 1.6rem;
+}
+
+.taskList h1{
+    text-align: center;
+    font-family: var(--font-family);
+    color: var(--color-header2);
+    font-size: 62px;
+    line-height: 65px;
+    letter-spacing: -0.04em;
+    padding: 1rem;
+}
+
+.taskList h3 {
+    font-family: var(--font-family);
+    font-size: 25px;
+    line-height: 60px;
+    letter-spacing: 0em;
+    color: var(--color-text)
+}
+
+.tasks__header {
+    display: flex;
+    flex-direction: row;
+}
+
+.tasks__header button {
+
+    min-height: 50px;
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 28px;
+    background: transparent;
+    border: 2px solid var(--color-button);
+    padding: 0.2rem 1rem 0.4rem;
+    margin: 0.4rem 2rem 1.8rem;
+    color: var(--color-button);
+
+    cursor: pointer;
+    outline: none;
+
+    border-radius: 20px;
+}
+
+.tasks__header button:hover {
+    background: transparent;
+    border: 2px solid var(--color-hover);
+    color: var(--color-hover);
+}
+
+.tasks__header p {
+    font-family: var(--font-family);
+    font-size: 22px;
+    letter-spacing: 0em;
+    color: var(--color-text);
+    margin: 0rem 0rem 1.5rem;
+    
+}

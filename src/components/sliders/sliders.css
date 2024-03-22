@@ -1,0 +1,42 @@
+
+.slider__header {
+    display: flex;
+    flex-direction: row;
+}
+.taskProgress {
+    max-width: 30rem;
+    width: 20rem;
+    margin: 0.3rem 1rem 0rem;
+}
+
+.taskProgress-track {
+    top: 8px;
+    height: 8px;
+    background: var(--color-text);
+    border-radius: 4px;
+}
+
+.taskProgress-track.taskProgress-track-0 {
+    background: var(--color-header2);
+}
+
+.taskProgress-thumb {
+    cursor: pointer;
+    background: var(--color-button);
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    outline:none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Add a subtle shadow for depth */
+
+}
+
+.taskProgress-thumb:hover {
+    transform: scale(1.1);
+}
+
+.taskProgress-mark {
+    width: 1.5px;
+    height: 8px;
+    background-color: gray;
+}

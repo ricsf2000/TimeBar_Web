@@ -1,0 +1,9 @@
+
+.Bars p {
+    font-family: var(--font-family);
+    font-size: 18px;
+    letter-spacing: 0em;
+    color: var(--color-text);
+    margin: 0rem 0rem 1.5rem;
+    
+}

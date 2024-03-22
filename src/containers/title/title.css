@@ -1,0 +1,14 @@
+.title__header {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.title-content h1{
+    font-family: var(--font-family);
+    color: var(--color-header2);
+    font-size: 62px;
+    line-height: 65px;
+    letter-spacing: -0.04em;
+    padding: 1rem;
+}
