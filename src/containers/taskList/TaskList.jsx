@@ -20,7 +20,6 @@ const TaskList = () => {
       <h1>TimeBar</h1>
       <div className='tasks__header'>
         <h3>Task Completion ({tasksCompleted}/{tasks.length})</h3>
-        <button> Add Task </button>
       </div>
       {tasks.map(task => (
         <div className='tasks__header' key={task.id}>
