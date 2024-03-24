@@ -23,7 +23,7 @@ const TaskList = () => {
       </div>
       {tasks.map(task => (
         <div className='tasks__header' key={task.id}>
-          <p>{inputTaskData[task.id]}</p>
+          <p>{inputTaskData[task.id][0]}</p>
           <Sliders taskId={task.id} completionStatus={task.completionStatus} onChange={handleCompletionChange} />
         </div>
       ))}
