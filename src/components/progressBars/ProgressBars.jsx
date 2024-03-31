@@ -6,7 +6,7 @@ const ProgressBars = (props) => {
   const progressStyle = {
     width: `${completed}%`,
     height: "100%",
-    borderRadius: "inherit",
+    borderRadius: "1px",
     backgroundColor: bgcolor,
     textAlign: "right",
     transition: "width 1s ease-in-out",

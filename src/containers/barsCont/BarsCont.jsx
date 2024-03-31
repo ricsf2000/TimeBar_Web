@@ -39,7 +39,7 @@ const BarsCont = () => {
   return (
     <div className='Bars section__margin section__padding'>
       <p>Time Elapsed: </p>
-      <ProgressBars bgcolor={"var(--color-bar1)"} completed={completedTime} />
+      <ProgressBars bgcolor={"var(--color-bar1)"} completed={completedTime}  />
       <p>Progress:</p>
       <ProgressBars bgcolor={"var(--color-bar2)"} completed={completed} />
     </div>

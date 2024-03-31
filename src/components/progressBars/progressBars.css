@@ -12,4 +12,5 @@
 .progressBar {
   padding: 5;
   font-weight: bold;
+  border-radius: 0px;
 }
