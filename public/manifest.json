@@ -1,6 +1,6 @@
 {
-  "short_name": "TaskBar",
-  "name": "TaskBar",
+  "short_name": "TimeBar",
+  "name": "TimeBar",
   "icons": [
     {
       "src": "favicon.ico",
