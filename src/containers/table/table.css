@@ -231,3 +231,19 @@
     max-width: 7rem;
     margin: 1rem 1rem 1rem;
 }
+
+
+.error-message {
+    position: absolute;
+    top: 5px;
+    left: auto;
+    margin: 1rem 1rem 1rem;
+    background-color: #f8d7da00;
+    color: #cf1e2f;
+    border: 2px solid #cb1325;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    text-align: center;
+    font-family: var(--font-family);
+}

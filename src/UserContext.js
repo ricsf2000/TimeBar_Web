@@ -3,32 +3,37 @@ import React, { createContext, useState, useEffect } from 'react';
 const UserContext = createContext();
 
 const UserProvider = ({ children }) => {
-  const [inputTaskData, setTaskData] = useState([]);
-  const [timeAvailable, setTimeAvailable] = useState([0, 0]); // Initial time available is 0 hours and 0 minutes
-  const [tasks, setTasks] = useState([]);
+  const [inputTaskData, setTaskData] = useState(() => {
+    const savedTaskData = localStorage.getItem('inputTaskData');
+    return savedTaskData ? JSON.parse(savedTaskData) : [];
+  });
+
+  const [timeAvailable, setTimeAvailable] = useState(() => {
+    const savedTimeAvailable = localStorage.getItem('timeAvailable');
+    return savedTimeAvailable ? JSON.parse(savedTimeAvailable) : [0, 0];
+  });
+
+  const [tasks, setTasks] = useState(() => {
+    const savedTasks = localStorage.getItem('tasks');
+    return savedTasks
+      ? JSON.parse(savedTasks)
+      : inputTaskData.map((task, index) => ({ id: index, completionStatus: 0 }));
+  });
 
   useEffect(() => {
-    // Update tasks whenever inputTaskData changes
-    setTasks(inputTaskData.map((task, index) => ({ id: index, completionStatus: 0 })));
+    localStorage.setItem('inputTaskData', JSON.stringify(inputTaskData));
   }, [inputTaskData]);
 
-  const addTaskData = (description, timeNeeded) => {
-    const newRow = [description, timeNeeded];
-    setTaskData([...inputTaskData, newRow]);
-  };
+  useEffect(() => {
+    localStorage.setItem('timeAvailable', JSON.stringify(timeAvailable));
+  }, [timeAvailable]);
 
-  const removeTaskData = (index) => {
-    const updatedTaskData = [...inputTaskData];
-    updatedTaskData.splice(index, 1);
-    setTaskData(updatedTaskData);
-  };
-
-  const updateTimeAvailable = (hours, minutes) => {
-    setTimeAvailable([hours, minutes]);
-  };
+  useEffect(() => {
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+  }, [tasks]);
 
   return (
-    <UserContext.Provider value={{ inputTaskData, timeAvailable, addTaskData, removeTaskData, setTimeAvailable, updateTimeAvailable, tasks, setTasks }}>
+    <UserContext.Provider value={{ inputTaskData, timeAvailable, setTaskData, setTimeAvailable, tasks, setTasks }}>
       {children}
     </UserContext.Provider>
   );
