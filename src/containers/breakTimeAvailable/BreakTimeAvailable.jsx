@@ -36,7 +36,7 @@ function BreakTimeAvailable() {
   return(
     <div className="time__header section__margin">
       <div className="time-content">
-        <h3>Break Time Available: </h3>
+        <h3>Break Time: </h3>
         <div className="time-content__input">
           <input 
             className="input-base"

@@ -22,7 +22,7 @@
 .input-base {
     flex: none;
     min-height: 50px;
-    width: 100px;
+    width: 180px;
     font-family: var(--font-family);
     font-weight: 400;
     font-size: 20px;
@@ -39,7 +39,7 @@
 
 .minutes__time-content__input {
     min-height: 50px;
-    width: 120px;  /* Add this to match input-base or set your desired width */
+    width: 180px;  
     font-family: var(--font-family);
     font-weight: 400;
     font-size: 20px;
