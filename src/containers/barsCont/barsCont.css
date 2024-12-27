@@ -7,3 +7,49 @@
     margin: 0rem 0rem 1.5rem;
     
 }
+
+.break-control {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .break-button {
+    padding: 8px 16px;
+    border: 2px solid #00BCD4;
+    border-radius: 15px;
+    cursor: pointer;
+    background-color: transparent;
+    color: #00BCD4;
+    transition: background-color 0.3s ease;
+    font-family: var(--font-family);
+    font-size: 18px;
+  }
+  
+  .break-button.break-active {
+    background: transparent;
+    border: 2px solid var(--color-hover);
+    color: var(--color-hover);
+  }
+  
+  .break-button:hover {
+    background: transparent;
+    border: 2px solid var(--color-hover);
+    color: var(--color-hover);
+  }
+  
+  .break-time {
+    font-size: 0.9rem;
+    font-family: var(--font-family);
+    font-size: 18px;
+    color: var(--color-text);
+  }
+  
+  .break-time-exceeded {
+    font-family: var(--font-family);
+    font-size: 18px;
+    letter-spacing: 0em;
+    color: var(--color-text);
+    color: #ea1616;
+  }

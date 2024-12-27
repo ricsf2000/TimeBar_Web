@@ -1,31 +1,31 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { UserContext } from '../../UserContext';
-import './timeAvailable.css';
+import './timeAvailable.css'; 
 
-function TimeAvailable() {
-  const { timeAvailable, setTimeAvailable } = useContext(UserContext);
+function BreakTimeAvailable() {
+  const { breakTimeAvailable, setBreakTimeAvailable } = useContext(UserContext);
   const [disableInputs, setDisableInputs] = useState(false);
   const [hours, setHours] = useState('');
   const [minutes, setMinutes] = useState('');
 
   useEffect(() => {
-    if (Array.isArray(timeAvailable) && timeAvailable.length === 2) {
-      setHours(timeAvailable[0].toString());
-      setMinutes(timeAvailable[1].toString());
+    if (Array.isArray(breakTimeAvailable) && breakTimeAvailable.length === 2) {
+      setHours(breakTimeAvailable[0].toString());
+      setMinutes(breakTimeAvailable[1].toString());
     } else {
-      console.error('Invalid timeAvailable format:', timeAvailable);
+      console.error('Invalid breakTimeAvailable format:', breakTimeAvailable);
     }
-  }, [timeAvailable]);
+  }, [breakTimeAvailable]);
 
   const handleSetTime = () => {
     const hoursInt = parseInt(hours) || 0;
     const minutesInt = parseInt(minutes) || 0;
     
-    if (setTimeAvailable && typeof setTimeAvailable === 'function') {
-      setTimeAvailable([hoursInt, minutesInt]);
+    if (setBreakTimeAvailable && typeof setBreakTimeAvailable === 'function') {
+      setBreakTimeAvailable([hoursInt, minutesInt]);
       setDisableInputs(true);
     } else {
-      console.error('setTimeAvailable is not a function in UserContext');
+      console.error('setBreakTimeAvailable is not a function in UserContext');
     }
   };
 
@@ -36,10 +36,10 @@ function TimeAvailable() {
   return(
     <div className="time__header section__margin">
       <div className="time-content">
-        <h3>Time Available: </h3>
+        <h3>Break Time Available: </h3>
         <div className="time-content__input">
           <input 
-            className="input-base"  // Add this class
+            className="input-base"
             type="number" 
             inputMode="numeric" 
             pattern="[0-9]*" 
@@ -59,21 +59,9 @@ function TimeAvailable() {
             onChange={(e) => setMinutes(e.target.value)}
           />
           {disableInputs ? (
-            <button 
-              className="button-base" 
-              id="time-button"  // Different ID from break-time-button
-              onClick={handleUndo}
-            >
-              Undo
-            </button>
+            <button className="button-base" id="break-time-button" onClick={handleUndo}>Undo</button>
           ) : (
-            <button 
-              className="button-base" 
-              id="time-button"  // Different ID from break-time-button
-              onClick={handleSetTime}
-            >
-              Set Time
-            </button>
+            <button className="button-base" id="break-time-button" onClick={handleSetTime}>Set Break Time</button>
           )}
         </div>
       </div>
@@ -81,4 +69,4 @@ function TimeAvailable() {
   );
 }
 
-export default TimeAvailable;
+export default BreakTimeAvailable;

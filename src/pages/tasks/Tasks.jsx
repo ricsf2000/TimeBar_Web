@@ -1,5 +1,5 @@
 import React from 'react'
-import { Table, TimeAvailable, Title } from '../../containers';
+import { Table, TimeAvailable, Title, BreakTimeAvailable } from '../../containers';
 import './tasks.css';
 
 const App = () => {
@@ -7,6 +7,7 @@ const App = () => {
     <div className="Tasks">
       <Title />
       <TimeAvailable />
+      <BreakTimeAvailable />
       <Table />
     </div>
   )
