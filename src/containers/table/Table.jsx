@@ -1,26 +1,18 @@
 import Add from '../../components/add/Add';
 import React, { useState, useContext, useEffect } from 'react';
 import { UserContext } from '../../UserContext';
-import { useNavigate } from 'react-router-dom';
 import './table.css';
 
 function DynamicTable() {
   const { 
     inputTaskData, 
-    setTaskData, 
-    timeAvailable, 
-    setTimeAvailable,
-    setIsBreak,
-    setBreakStartTime,
-    setTotalBreakTime,
-    setBreakPeriods 
+    setTaskData,
+    timeAvailable
   } = useContext(UserContext);
-  const navigate = useNavigate();
   const [buttonPopup, setButtonPopup] = useState(false);
   const [description, setDescription] = useState('');
   const [timeAllotted, setTimeAllotted] = useState('');
   const [timeAllottedError, setTimeAllottedError] = useState(false);
-  const [submitError, setSubmitError] = useState('');
 
   useEffect(() => {
     if (inputTaskData.length === 0) {
@@ -30,6 +22,20 @@ function DynamicTable() {
 
   const calculatePercentRemaining = () => {
     return 100 - inputTaskData.reduce((total, row) => total + parseInt(row[1]), 0);
+  };
+
+  const calculateTimeForPercent = (percent) => {
+    const totalMinutes = timeAvailable[0] * 60 + timeAvailable[1];
+    const allocatedMinutes = Math.round((percent / 100) * totalMinutes);
+    
+    const hours = Math.floor(allocatedMinutes / 60);
+    const minutes = allocatedMinutes % 60;
+    
+    if (hours > 0) {
+      return `${hours}h ${minutes}m`;
+    } else {
+      return `${minutes}m`;
+    }
   };
 
   const handleAddRow = () => {
@@ -66,52 +72,11 @@ function DynamicTable() {
     }
   };
 
-  const handleSubmit = () => {
-    setSubmitError('');
-  
-    const totalPercentage = inputTaskData.reduce((total, row) => total + parseInt(row[1]), 0);
-    if (totalPercentage !== 100) {
-      setSubmitError(`Task percentages must add up to 100%. Current total: ${totalPercentage}%`);
-      return;
-    }
-  
-    const totalTimeAvailable = timeAvailable[0] * 60 + timeAvailable[1]; 
-    if (totalTimeAvailable <= 0) {
-      setSubmitError('Time available must be greater than 0 minutes.');
-      return;
-    }
-  
-    localStorage.removeItem('startTime');
-    localStorage.removeItem('currentTime');
-    localStorage.removeItem('isBreak');
-    localStorage.removeItem('breakStartTime');
-    localStorage.removeItem('totalBreakTime');
-    localStorage.removeItem('breakPeriods');  
-  
-    setIsBreak(false);
-    setBreakStartTime(null);
-    setTotalBreakTime(0);
-    setBreakPeriods([]); 
-  
-    navigate('/bars');
-  };
 
   return (
     <div>
-      {submitError && (
-        <div className="error-message" style={{
-          backgroundColor: '#f8d7da',
-          color: '#721c24',
-          padding: '10px',
-          marginBottom: '15px',
-          borderRadius: '5px',
-          textAlign: 'center'
-        }}>
-          {submitError}
-        </div>
-      )}
-      <div className="table-content section__margin">
-        <h3>Tasks: </h3>
+      <div className="table-content">
+        <h3 className="table-header">Tasks:</h3>
         <table>
           <thead>
             <tr>
@@ -126,7 +91,11 @@ function DynamicTable() {
                 <td>{row[0]}</td>
                 <td>{row[1]}%</td>
                 <td>
-                  <button onClick={() => handleDeleteRow(index)}>X</button>
+                  <button className="delete-btn" onClick={() => handleDeleteRow(index)}>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </button>
                 </td>
               </tr>
             ))}
@@ -134,7 +103,7 @@ function DynamicTable() {
         </table>
       </div>
       <div className="Add-Submit">
-        <div className="Add section__margin">
+        <div className="Add centered-add">
           <button onClick={() => setButtonPopup(true)}>Add Task</button>
           <Add trigger={buttonPopup} setTrigger={setButtonPopup}>
             <h1>Adding Task</h1>
@@ -155,13 +124,12 @@ function DynamicTable() {
                 onChange={(e) => setTimeAllotted(e.target.value)}
               />
               <p>%</p>
+              <span className="time-arrow">→</span>
+              <p className="time-display">{timeAllotted ? calculateTimeForPercent(parseInt(timeAllotted) || 0) : '0m'}</p>
             </div>
             {timeAllottedError && <p className='errorMessage'>Time needed exceeds percent remaining!</p>}
             <button className="close" onClick={handleAddRow}>Save</button>
           </Add>
-        </div>
-        <div className="submit section__margin">
-          <button type="button" onClick={handleSubmit}>Submit</button>
         </div>
       </div>
     </div>

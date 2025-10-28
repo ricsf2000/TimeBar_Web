@@ -1,0 +1,28 @@
+.Tasks {
+  margin-inline: 8rem;
+}
+
+.tasks-layout {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.tasks-left {
+  flex: 0 0 300px;
+}
+
+.tasks-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 768px) {
+  .tasks-layout {
+    flex-direction: column;
+  }
+  .Tasks {
+    margin-inline: 3rem;
+  }
+}

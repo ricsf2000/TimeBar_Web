@@ -74,6 +74,7 @@ const BarsCont = () => {
     }
   };
 
+
   useEffect(() => {
     if (!localStorage.getItem('startTime')) {
       localStorage.setItem('startTime', startTime.toISOString());
@@ -151,7 +152,7 @@ const BarsCont = () => {
   };
   
   return (
-    <div className='Bars section__margin section__padding'>
+    <div className='bars-container'>
       <div className='break-control'>
         <button 
           onClick={handleBreakToggle}

@@ -1,4 +1,8 @@
 
+.taskList {
+    width: 100%;
+}
+
 .spacing {
     margin: 1.6rem;
 }
@@ -33,4 +37,10 @@
     color: var(--color-text);
     margin: 0rem 0rem 1.5rem;
     
+}
+
+@media (max-width: 600px) {
+  .taskList {
+    display: none !important;
+  }
 }

@@ -1,5 +1,9 @@
 
-.Bars p {
+.bars-container {
+    width: 100%;
+}
+
+.bars-container p {
     font-family: var(--font-family);
     font-size: 18px;
     letter-spacing: 0em;
@@ -38,6 +42,7 @@
     border: 2px solid var(--color-hover);
     color: var(--color-hover);
   }
+
   
   .break-time {
     font-size: 0.9rem;
@@ -53,3 +58,4 @@
     color: var(--color-text);
     color: #ea1616;
   }
+

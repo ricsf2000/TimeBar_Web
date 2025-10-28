@@ -28,4 +28,5 @@
     right: 5px;
     max-width: 7rem;
     margin: -0.4rem -1.7rem 0rem;
+    border: none !important; 
 }

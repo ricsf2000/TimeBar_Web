@@ -1,13 +1,14 @@
 import React from 'react';
 import { BarsCont, TaskList } from '../../containers';
 import './bars.css';
+
 const Bars = () => {
   return (
-    <div>
-    <TaskList/>
-    <div className="background-color">
-      <BarsCont/>
-    </div>
+    <div className="Bars">
+      <div className="bars-layout">
+        <TaskList/>
+        <BarsCont/>
+      </div>
     </div>
   )
 }

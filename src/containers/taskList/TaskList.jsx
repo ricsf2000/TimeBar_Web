@@ -38,7 +38,7 @@ const TaskList = () => {
   }
 
   return (
-    <div className="taskList section__margin">
+    <div className="taskList">
       <h1>TimeBar</h1>
       <div className='tasks__header'>
         <h3>Task Completion ({tasks.filter(task => task.completionStatus === 100).length}/{tasks.length})</h3>

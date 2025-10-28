@@ -3,13 +3,14 @@
 :root {
   --font-family: 'Manrope', sans-serif;
     
-  --color-header2: #00BCD4;
-  --color-bg: #091425;
-  --color-popup: #091425;
+  --color-header2: #01afc6;
+  --color-bg: #010c1d;
+  --color-popup: #010c1d;;
   --color-footer : #042343;
-  --color-table: #162D51;
-  --color-header: #0d2434;
-  --color-text: #93b7db;
+  --color-table: #211b1b1f;
+  --color-header: #01afc6;
+  --color-text: #cfddeb;
+  --color-text2: #010c1d;
   --color-subtext: #93b7db;
   --color-button: #00BCD4;
   --color-hover: #65e7f8;
